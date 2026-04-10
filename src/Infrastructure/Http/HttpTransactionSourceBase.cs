@@ -32,7 +32,7 @@ public abstract class HttpTransactionSourceBase : ITransactionSource
     protected abstract Task<IEnumerable<RawTransactionDto>> FetchInternalAsync(DateTimeOffset since,
         CancellationToken ct);
     
-    public async Task<IEnumerable<dynamic>> FetchAsync(DateTimeOffset since, CancellationToken ct = default)
+    public async Task<IEnumerable<RawTransactionDto>> FetchAsync(DateTimeOffset since, CancellationToken ct = default)
     {
         _logger.LogInformation("Fetching from HTTP source {SourceId} since {Since}", SourceId,since);
         return await _retryPolicy.ExecuteAsync(() => FetchInternalAsync(since, ct));

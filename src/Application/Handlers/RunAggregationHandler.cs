@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Handlers;
 
-public abstract record RunAggregationCommand : IRequest<AggregationRunResponse>;
+public record RunAggregationCommand : IRequest<AggregationRunResponse>;
 
 public class RunAggregationHandler(
     IAggregationService aggregationService,

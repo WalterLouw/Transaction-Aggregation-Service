@@ -27,6 +27,7 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         //Persistence
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         services.AddDbContext<TransactionDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("Postgres")));
         

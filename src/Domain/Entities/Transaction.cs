@@ -40,7 +40,7 @@ public class Transaction
             ExternalId = externalId.Trim(),
             SourceId = sourceId.Trim(),
             Amount = new Money(amount, currency),
-            OccurredAt = occurredAt,
+            OccurredAt = occurredAt.ToUniversalTime(),
             IngestedAt = DateTimeOffset.UtcNow,
             Status = TransactionStatus.Pending,
             Category =  TransactionCategory.Other,

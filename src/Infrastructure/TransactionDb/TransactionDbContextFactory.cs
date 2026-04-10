@@ -13,6 +13,7 @@ public class TransactionDbContextFactory : IDesignTimeDbContextFactory<Transacti
 {
     public TransactionDbContext CreateDbContext(string[] args)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../transaction-aggregator-api"))
             .AddJsonFile("appsettings.json")

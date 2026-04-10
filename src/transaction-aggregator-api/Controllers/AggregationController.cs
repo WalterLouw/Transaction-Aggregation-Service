@@ -1,3 +1,4 @@
+using Application.Handlers;
 using Asp.Versioning;
 using Contracts.Requests;
 using Contracts.Responses;
@@ -19,7 +20,7 @@ public class AggregationController(IMediator mediator) : ControllerBase
     [ProducesResponseType(typeof(AggregationRunResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Run(CancellationToken ct)
     {
-        var result = await mediator.Send(new RunAggregationRequest(), ct);
-        return Ok(result);
+        var result = await mediator.Send(new RunAggregationCommand(), ct);
+        return Ok((AggregationRunResponse)result);
     }
 }

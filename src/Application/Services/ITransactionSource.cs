@@ -7,5 +7,5 @@ namespace Application.Services;
 public interface ITransactionSource
 {
     public string SourceId { get; }
-    Task<IEnumerable<dynamic>> FetchAsync(DateTimeOffset since, CancellationToken ct = default);
+    Task<IEnumerable<RawTransactionDto>> FetchAsync(DateTimeOffset since, CancellationToken ct = default);
 }

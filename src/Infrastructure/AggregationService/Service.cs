@@ -29,7 +29,7 @@ public class AggregationService : IAggregationService
 
     public async Task<AggregationRunResponse> RunAsync(CancellationToken ct = default)
     {
-        var startedAt = DateTimeOffset.Now;
+        var startedAt = DateTimeOffset.UtcNow;
         
         //Default sliding window that moves forward with each async run
         var since = startedAt - TimeSpan.FromMinutes(15);

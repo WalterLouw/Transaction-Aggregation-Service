@@ -2,6 +2,7 @@ using Application.Handlers;
 using Contracts.Responses;
 using Hangfire;
 using Infrastructure;
+using Infrastructure.Extensions;
 using Infrastructure.Jobs;
 using MediatR;
 using transaction_aggregator.Exceptions;
@@ -17,6 +18,11 @@ builder.Services
     .AddControllers();
 
 builder.Services.AddOpenApi("v1");
+
+// In development, swap real sources for the mock source so Swagger works
+// without needing real database or API connections
+if (builder.Environment.IsDevelopment())
+    builder.Services.AddDevelopmentInfrastructure();
 
 var app = builder.Build();
 
